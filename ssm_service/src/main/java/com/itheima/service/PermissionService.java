@@ -11,4 +11,9 @@ public interface PermissionService {
 
 
     void del(String id);
+
+
+    List<Permission> permissionsFindByRoleId(String roleId);
+
+    void roleAddPermission(String roleId, String[] ids);
 }

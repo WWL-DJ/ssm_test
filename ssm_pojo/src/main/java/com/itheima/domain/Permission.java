@@ -9,6 +9,21 @@ public class Permission {
     private String url;
     private List<Role> roles;
 
+    /**
+     * 扩展列 与数据库列不对应 仅仅用于判断用户是否勾选
+     * 1：勾选了该权限
+     * 0：未勾选该权限
+     */
+    private String selected;
+
+    public String getSelected() {
+        return selected;
+    }
+
+    public void setSelected(String selected) {
+        this.selected = selected;
+    }
+
     public String getId() {
         return id;
     }

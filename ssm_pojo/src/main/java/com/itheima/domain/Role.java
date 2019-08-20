@@ -9,6 +9,21 @@ public class Role {
     private String roleDesc;
 
     /**
+     * 扩展字段 与数据库的列不对应 仅仅用于封装用户是否选择该角色
+     * 1：用户关联该角色
+     * 0：用户未关联该角色
+     */
+    private String selected;
+
+    public String getSelected() {
+        return selected;
+    }
+
+    public void setSelected(String selected) {
+        this.selected = selected;
+    }
+
+    /**
      * 建立角色和权限之间的实体关系  一个角色有很多个权限
      * @return
      */

@@ -50,4 +50,30 @@ public interface RoleMapper {
      */
     @Insert("insert into ROLE values(sys_guid(),#{roleName},#{roleDesc})")
     void add(Role role);
+
+    /**
+     * 根据userId查询角色信息
+     * @param userId
+     * @return
+     */
+    //@Select("select * from ROLE r left join (select * from USERINFO_ROLE where USERID=#{userId}) t on t.ROLEID=r.ID where t.ROLEID is null")
+    @Select("select r.*,nvl2(t.ROLEID,1,0) selected from ROLE r left join (select * from USERINFO_ROLE where USERID=#{userId}) t on t.ROLEID=r.ID")
+    List<Role> findByUserToId(String userId);
+
+    /**
+     * 根据userId删除所有角色信息
+     * @param userId
+     */
+    @Delete("delete from USERINFO_ROLE where USERID = #{userId}")
+    void deleteRolesFromUserId(String userId);
+
+    /**
+     * 给用户添加角色
+     * @param userId
+     * @param roleId
+     */
+    @Insert("insert into USERINFO_ROLE values(#{param1},#{param2})")
+    void userAddRole(String userId, String roleId);
+
+
 }

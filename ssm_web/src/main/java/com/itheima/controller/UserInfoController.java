@@ -20,6 +20,13 @@ public class UserInfoController {
     private UserInfoService userInfoService;
 
 
+    /**
+     * 查看所有用户信息
+     * @param model
+     * @param pageNo
+     * @param rows
+     * @return
+     */
     @RequestMapping(path = "findAll")
     public String findAll(Model model, @RequestParam(name = "pageNo",defaultValue = "1")Integer pageNo, @RequestParam(name = "rows",defaultValue = "3") Integer rows){
         // 调用业务层查询数据

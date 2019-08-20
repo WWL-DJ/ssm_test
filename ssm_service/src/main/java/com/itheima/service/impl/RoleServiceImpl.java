@@ -43,5 +43,32 @@ public class RoleServiceImpl implements RoleService {
         roleMapper.add(role);
     }
 
+    /**
+     * 根据userId查询角色信息
+     * @param userId
+     * @return
+     */
+    @Override
+    public List<Role> findByUserToId(String userId) {
+
+        return roleMapper.findByUserToId(userId);
+    }
+
+    /**
+     * 给用户添加角色
+     * @param userId
+     * @param ids
+     */
+    @Override
+    public void userAddRole(String userId, String[] ids) {
+        // 删除用户拥有的所有角色信息
+        roleMapper.deleteRolesFromUserId(userId);
+
+        // 给用户添加角色信息
+        for (String roleId : ids) {
+            roleMapper.userAddRole(userId,roleId);
+        }
+    }
+
 
 }

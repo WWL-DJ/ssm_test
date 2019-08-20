@@ -35,12 +35,43 @@ public class PermissionController {
         return "redirect:/permission/findAll";
     }
 
+    /**
+     * 根据id删除权限
+     * @param id
+     * @return
+     */
     @RequestMapping(path = "delete")
     public String del(String id){
         // 调用service层删除数据
         permissionService.del(id);
 
         return "redirect:/permission/findAll";
+    }
+
+
+    /**
+     * 根据角色id查询权限信息
+     */
+    @RequestMapping(path = "permissionsFindByRoleId")
+    public String permissionsFindByRoleId(Model model,String roleId){
+        //调用service层查询数据
+        List<Permission> permissions = permissionService.permissionsFindByRoleId(roleId);
+        //存储数据到model
+        model.addAttribute("permissions",permissions);
+        model.addAttribute("roleId",roleId);
+
+        return "role-permission-add";
+    }
+
+    /**
+     * 根据roleId添加权限信息
+     */
+    @RequestMapping(path = "roleAddPermission")
+    public String roleAddPermission(String roleId,String[] ids){
+        //调用service添加数据
+        permissionService.roleAddPermission(roleId,ids);
+
+        return "redirect:/role/findAll";
     }
 
 }

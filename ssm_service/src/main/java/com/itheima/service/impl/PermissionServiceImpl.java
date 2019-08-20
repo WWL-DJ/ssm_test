@@ -38,4 +38,32 @@ public class PermissionServiceImpl implements PermissionService {
         permissionsMapper.delP(id);
 
     }
+
+    /**
+     * 查询角色的权限
+     * @param roleId
+     * @return
+     */
+    @Override
+    public List<Permission> permissionsFindByRoleId(String roleId) {
+        List<Permission> permissions = permissionsMapper.permissionsFindByRoleId(roleId);
+        return permissions;
+    }
+
+    /**
+     * 根据roleId添加权限
+     * @param roleId
+     * @param ids
+     */
+    @Override
+    public void roleAddPermission(String roleId, String[] ids) {
+        //先删除用户所拥有的所有权限
+        permissionsMapper.delete(roleId);
+
+        for (String permissionId : ids) {
+            permissionsMapper.roleAddPermission(roleId,permissionId);
+        }
+    }
+
+
 }

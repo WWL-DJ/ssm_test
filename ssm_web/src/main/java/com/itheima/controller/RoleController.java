@@ -49,4 +49,28 @@ public class RoleController {
         return "redirect:/role/findAll";
     }
 
+    /**
+     * 根据userId查询角色信息
+     */
+    @RequestMapping(path = "findByUserToId")
+    public String findByUserToId(Model model,String userId){
+        //调用service层查询数据
+        List<Role> roles = roleService.findByUserToId(userId);
+        //将数据存储到model
+        model.addAttribute("roles",roles);
+        model.addAttribute("userId",userId);
+
+        return "user-role-add";
+    }
+
+    /**
+     * 根据userId查询角色
+     */
+    @RequestMapping(path = "userAddRole")
+    public String userAddRole(String userId,String[] ids){
+        //调用service层添加角色
+        roleService.userAddRole(userId,ids);
+
+        return "redirect:/user/findAll";
+    }
 }

@@ -11,4 +11,8 @@ public interface RoleService {
     Role findById(String id);
 
     void add(Role role);
+
+    List<Role> findByUserToId(String userId);
+
+    void userAddRole(String userId, String[] ids);
 }
