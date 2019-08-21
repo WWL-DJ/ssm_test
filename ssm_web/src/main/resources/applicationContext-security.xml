@@ -2,11 +2,14 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:security="http://www.springframework.org/schema/security"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:secuity="http://www.springframework.org/schema/security"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/security
     http://www.springframework.org/schema/security/spring-security.xsd">
 
+    <!--开启权限控制器jsr250-annotations-->
+    <!--<secuity:global-method-security jsr250-annotations="enabled"></secuity:global-method-security>-->
 
     <!--指定路径,不需要权限认证-->
     <security:http pattern="/login.jsp" security="none"></security:http>
@@ -15,15 +18,13 @@
     <security:http pattern="/img/**" security="none"></security:http>
     <security:http pattern="/plugins/**" security="none"></security:http>
 
-    <!--对http请求进行权限认证
+    <!-- 对http请求进行权限认证
         auto-config : 是否开启自动配置
-        use-expressions : 是否使用表达式
-    -->
+        use-expressions : 是否使用表达式-->
     <security:http auto-config="true" use-expressions="false">
         <!--配置拦截路径
             pattern : 拦截路径   /* 拦截一级目录   /** 拦截目录以及其子目录下所有路径   /user/findAll
-            access  : 路径需要什么样的角色可以访问 ,必须以ROLE_开头  ROLE_*
-        -->
+            access  : 路径需要什么样的角色可以访问 ,必须以ROLE_开头  ROLE_* -->
         <security:intercept-url pattern="/**" access="ROLE_USER,ROLE_ADMIN"></security:intercept-url>
 
         <!--配置使用自定义页面

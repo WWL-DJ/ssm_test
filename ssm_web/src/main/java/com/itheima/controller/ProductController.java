@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @Controller
@@ -23,6 +24,7 @@ public class ProductController {
      * 查询所有信息
      */
     @RequestMapping(path ="/findAll")
+//    @RolesAllowed("ADMIN")
     public String findAll(Model model, @RequestParam(name = "pageNo",defaultValue = "1") Integer pageNo,@RequestParam(name = "rows",defaultValue = "5") Integer rows){
         //查询所有商品数据
         List<Product> products = productService.findAll(pageNo, rows);

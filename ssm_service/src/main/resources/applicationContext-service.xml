@@ -23,6 +23,7 @@
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"></property>
     </bean>
+
     <!--配置事物通知-->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <!--配置事物属性-->
@@ -38,7 +39,7 @@
     <aop:config>
         <!--配置切入点表达式-->
         <aop:pointcut id="txPointcut" expression="execution(* com.itheima.service.impl.*.*(..))"></aop:pointcut>
-        <!--配置切入点表达式与通知的结合-->
+        <!--配置切入点表达式与通知的结合 注入-->
         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"></aop:advisor>
     </aop:config>
 

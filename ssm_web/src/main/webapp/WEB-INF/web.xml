@@ -52,15 +52,19 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>classpath:applicationContext-web.xml</param-value>
 		</init-param>
-
 		<load-on-startup>1</load-on-startup>
-
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>dispatcherServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
+
+	<!--权限不足跳转错误403页面-->
+	<error-page>
+		<error-code>403</error-code>
+		<location>/403.jsp</location>
+	</error-page>
 
 	<welcome-file-list>
 		<welcome-file>main.jsp</welcome-file>

@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!-- 页面头部 -->
 <header class="main-header">
     <!-- Logo -->
     <a href="all-admin-index.html" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>后宫</b></span> <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>数据</b>后宫管理</span>
+        <span class="logo-mini"><b>后台</b></span> <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>数据</b>后台管理</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -20,7 +21,7 @@
                                                        class="dropdown-toggle" data-toggle="dropdown"> <img
                         src="${pageContext.request.contextPath}/img/user2-160x160.jpg"
                         class="user-image" alt="User Image"> <span class="hidden-xs">
-							WWL
+							<security:authentication property="principal.username"></security:authentication>
 					</span>
 
                 </a>

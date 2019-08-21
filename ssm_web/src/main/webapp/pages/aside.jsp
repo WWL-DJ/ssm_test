@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!-- 导航侧栏 -->
 <aside class="main-sidebar">
     <section class="sidebar">
@@ -7,7 +8,9 @@
                 <img src="${pageContext.request.contextPath}/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>WWL</p>
+                <p>
+                    <security:authentication property="principal.username"></security:authentication>
+                </p>
                 <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
             </div>
         </div>
@@ -15,7 +18,7 @@
         <ul class="sidebar-menu">
             <li class="header">菜单</li>
             <li id="admin-index">
-                <a href="${pageContext.request.contextPath}/pages/main.jsp">
+                <a href="${pageContext.request.contextPath}/main.jsp">
                     <i class="fa fa-dashboard"></i> <span>首页</span>
                 </a>
             </li>
@@ -46,7 +49,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/pages/syslog-list.html">
+                        <a href="${pageContext.request.contextPath}/sysLog/findByPage">
                             <i class="fa fa-circle-o"></i> 访问日志
                         </a>
                     </li>

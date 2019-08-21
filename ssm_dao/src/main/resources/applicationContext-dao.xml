@@ -22,6 +22,7 @@
     <!--Spring整合Mybatis二个Bean-->
     <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"></property>
+        <!--配置别名-->
         <property name="typeAliasesPackage" value="com.itheima.domain"></property>
 
         <!--配置pageHelper拦截器-->
@@ -41,6 +42,7 @@
         </property>
     </bean>
 
+    <!--自动扫描，将Mapper接口生成代理注入到spring-->
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.itheima.dao"></property>
     </bean>
